@@ -29,7 +29,7 @@ spec:
         - /etc/config/vscode/code-server.sh
         args:
         - --bind-addr 0.0.0.0:8080 
-#        - --extensions-dir /User/.local/share/code-server/extensions 
+        - --extensions-dir /home/iguazio/.local/share/code-server/extensions 
         - --auth none 
         - /User
         env:
@@ -69,7 +69,8 @@ spec:
         - name: IGUAZIO_HOME
           value: /User
         - name: HOME
-          value: /home/iguazio
+          value: /User
+#          value: /home/iguazio
         - name: V3IO_HOME
           value: users/admin
         - name: V3IO_HOME_URL
