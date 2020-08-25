@@ -81,6 +81,9 @@ RUN chmod g+rw /home && \
 RUN mkdir -p /igz/java && \
     chown -R iguazio:iguazio /igz/java
 
+COPY bash-it.sh /igz/ 
+RUN chown iguazio:iguazio /igz/bash-it.sh
+
 RUN chown -R iguazio:iguazio /home/iguazio/workspace
 
 # Generate an explicit kube config, since vscode extension needs it
