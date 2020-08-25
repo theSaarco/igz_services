@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/auth-method: POST
+    nginx.ingress.kubernetes.io/auth-response-headers: X-Remote-User,X-V3io-Session-Key
+    nginx.ingress.kubernetes.io/auth-signin: https://dashboard.{{ .Values.igzDomain }}/login
+    nginx.ingress.kubernetes.io/auth-url: https://172.31.6.161/api/sessions/verifications/app_service
+    nginx.ingress.kubernetes.io/configuration-snippet: proxy_set_header authorization
+      "";
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  name: ssh
+  namespace: {{ .Values.namespace }} 
+spec:
+  rules:
+  - host: ssh.{{ .Values.igzDomain }}
+    http:
+      paths:
+      - backend:
+          serviceName: ssh
+          servicePort: 8080
+        path: /
+  tls:
+  - hosts:
+    - ssh.{{ .Values.igzDomain }}
+    secretName: ingress-tls

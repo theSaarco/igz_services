@@ -1,0 +1,212 @@
+apiVersion: v1
+data:
+  create-cert.sh: |
+    #!/bin/bash
+
+    set -e
+
+    echo -n "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" | base64 --decode > /var/run/iguazio/secrets/tls.jks
+    echo -n "LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktnd2dnU2tBZ0VBQW9JQkFRQytzcFE0dXZzQWhnMDgKYVV6cTFCYmJ5TUVJbk1FWVBzN3M2RHp2Ulk5bTgrNXU3MHFnRGxNWlcvaGs5V1RTMDduVEdKWisraCtESm5zdQpzVFVrL0Uwb3Jmc1p4bEVyemRuaVVJVWNxMXRLRXFpS3daWnN0TlhLREludXkrMllkRVJ0RG9Ud2ZXUWJHME5rCjRMaGMrditubjV5SHVZS0RNSFBNZlBKdWk3dis3VU4wNkg5aXFVV3ZsL25pMzc4TTNFYUhkM2ttMkZtK0ZmTWQKbGQ1TDhyMjFkbnlJcEFHMGRGOW5LSnZpM2tBeXJ2THdjTE9INlVlUkhEMmN4clgzU3NMdXJDVWdoT3B0N3k5QwpFU29OVzh4cGMzY01XYkFOT0hQU1FsaGNROXFqS0toVE5wMkhvTWFzUkQrSXdiVFpsb3hNYlA5ckdqVmpRMzJjCmUrVG4vcU5EQWdNQkFBRUNnZ0VBZkwzb1EydmNnUzB2UDFOS1kxbzFVYlB5d2FWNGtsbVRsbGtjY3hBM2pBc0kKN3p4TXZvSmdUWGhoOWZpbjZWbGlkdm5naUZNcGhlc0lMVFR5SksxOTg1eExZMExkR2lCZjVMRHpRaHU5YmFqaQo0MUZiQ3VVSDdGRmpjUGVwQms4WDY1YlIwMWJTd3dDRWgxcVFmeElaWmhiOGw3UDc4Y0VpSHFPbEdqY0IxUEZRClRFQWUxRC9GL3hkZWlSMktrd1JsRFlNV0RpR2wyOXFMRXZEeFgyVTRMNGZibURzTjJDc3dhZWxPbjR0Z0diei8KT291VURLdnZKYkJ0RlVWTk56MVNFd0xQWjNaRVd0YjBlaWxwTXZxckREVElPWTVkbmI3bm5sVE52YjZTck5mQgpJdW1QYzI4U3VTZldoUjc0eWdrOFo4QmxGbVRUUTNxb2l4VkpIaktwMFFLQmdRRDQ5K0hFQk1yLzRFTFRuRjNpCmR4QzFGaWVqMStpWjN6RytML21FNHg4ZStHcW1mR01iL0lnQ1FNbDFXVXA2RUIzUFJaZzEvT0tOSm5jZ05oWHAKSDRyanBzS1pQUkw3YTlvSXhuSEI5SnJXTFJqK1JNYVRhZE9RVzRocjRZalA4Q2wycUhaMkNkbXVLTWVZY2dYRApSV1FTakZiS2hOVHRlRGw4WGhlQzQzT29sUUtCZ1FERUZXRzRSVzNaMmVmeHRnVDJkbVFhMHhDdVNIUUU2cWNvCi9QZ3RnVEx0cW5OYUlEcjhMUlFxcS80WkRIQUh5cHlORjNtaWg0RFB2THQ2eVRIajJwYTRiWlppWDJkL0dFYm8KeHp3cDFjY1p0cVBBZ2ZxUlczdFBPeFI1ekhTTkcvWkkyMEplRnROQXZJOUFBSmcvRDBJd3B4dm1BcjVUZlRrUAplejQvVm82dWR3S0JnRFVLU2pUQ2VLVHVtQTRSQUFkaEtsUUo5a1AzbVh3K2lwQmtGQnAxY0luZWpvb05jZWZpCmN1OVg4aE5vQkcvZ3d4a0hVSmdmMmZ3TU45REs5UHdIVmtXTm4yT2FHVk1xOVBadG9JcWJtK2tKRG93TkJ1a2MKNEkrZWtIKzdPclJpQzlOVnJIY1ZQaVRXVno5byswVlFvVE02WnJzYWRXcHA5SVZFWG1ucUh4ZkpBb0dCQU1JTgpUd29vVzlDUElFWkxscG03RE5Lbk13am4xem5PWitQZWhsV3lXUTV2ODN5c0RQUG9RTjhDRzVQNmhSeVEzV0djCmE5bjNNL2xpbEQrdHdWdjN4ZFY3VHFySU5BckpvZE5ZNlNlVjAxYVZNM1dlckxVUnpmVFpTU2hJdU1lMWRvVWYKeUl5SkZrUW8xN1BGWXVaMVdWSUE3MUV3UWQ4cVBFQWYvYmg5RnZOOUFvR0JBSzNnNkhoQjVscnJkTkUwK2JqUwpxZTN1Y3dRV2NnL3ZHaTlXQzJDdzhvelhZOVdiK0pueENnRHZQQTcwZU42RjlRWlNnMW9mcWFSMHR0WnZqbDJnCkNDMDVzZ1F2MEx0ZG1NQ3o0eXFMdk0zeWlUNkkzeHdEWTFidi9PYVh5bmtQZXhHSkt5ZTZlMVQxd0VaL2hRQUYKMGtUSy9rMjRNbnZNSnRkUVFUT05BMmZOCi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K" | base64 --decode > /var/run/iguazio/secrets/tls.key
+    echo -n "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURxVENDQXBHZ0F3SUJBZ0lKQU5ob0hYZHJoaFRmTUEwR0NTcUdTSWIzRFFFQkN3VUFNQ014RURBT0JnTlYKQkFzTUIybG5kV0Y2YVc4eER6QU5CZ05WQkFNTUJuQnlaWE4wYnpBZUZ3MHlNREE0TURZd09ESTJNelJhRncwegpNREE0TURRd09ESTJNelJhTUNNeEVEQU9CZ05WQkFzTUIybG5kV0Y2YVc4eER6QU5CZ05WQkFNTUJuQnlaWE4wCmJ6Q0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUw2eWxEaTYrd0NHRFR4cFRPclUKRnR2SXdRaWN3UmcrenV6b1BPOUZqMmJ6N203dlNxQU9VeGxiK0dUMVpOTFR1ZE1ZbG43Nkg0TW1leTZ4TlNUOApUU2l0K3huR1VTdk4yZUpRaFJ5clcwb1NxSXJCbG15MDFjb01pZTdMN1poMFJHME9oUEI5WkJzYlEyVGd1Rno2Ci82ZWZuSWU1Z29Nd2M4eDg4bTZMdS83dFEzVG9mMktwUmErWCtlTGZ2d3pjUm9kM2VTYllXYjRWOHgyVjNrdnkKdmJWMmZJaWtBYlIwWDJjb20rTGVRREt1OHZCd3M0ZnBSNUVjUFp6R3RmZEt3dTZzSlNDRTZtM3ZMMElSS2cxYgp6R2x6ZHd4WnNBMDRjOUpDV0Z4RDJxTW9xRk0yblllZ3hxeEVQNGpCdE5tV2pFeHMvMnNhTldORGZaeDc1T2YrCm8wTUNBd0VBQWFPQjN6Q0IzRENCMlFZRFZSMFJCSUhSTUlIT2dnbHNiMk5oYkdodmMzU0NCbkJ5WlhOMGI0SVoKY0hKbGMzUnZMbVJsWm1GMWJIUXRkR1Z1WVc1MExuTjJZNEluY0hKbGMzUnZMbVJsWm1GMWJIUXRkR1Z1WVc1MApMbk4yWXk1amJIVnpkR1Z5TG14dlkyRnNnaEprWldaaGRXeDBMWFJsYm1GdWRDNXpkbU9DSUdSbFptRjFiSFF0CmRHVnVZVzUwTG5OMll5NWpiSFZ6ZEdWeUxteHZZMkZzZ2o5d2NtVnpkRzh0WVhCcExYQnlaWE4wYnk1a1pXWmgKZFd4MExYUmxibUZ1ZEM1aGNIQXVjMkZoY21NdGRHVnpkQzVwWjNWaGVtbHZMV05rTUM1amIyMHdEUVlKS29aSQpodmNOQVFFTEJRQURnZ0VCQUp0VTVTWFUzaXhtM0VnUXcxME1DSytXYnJCNFB4N0t5TjJxUnptUjc1aDZvRzlPCkcxbXVwK1NTbTJCWVM2dHp5K0Rxbk1neCtSZHFkbjRWZ1puRFZQNG9UeFNzcG1XQWprWkpCblJsL2J4Tmp6SloKUXYyaVRtSFhTa2hEb3djRHZlL3YyUXVEVjBoZWdGZStCQndKclg2VXZkWExlQzZxb1hsSjVXdXA0eWE2TXMvMwpzT2gzek5vNmJxTU15b0JhbTNtZmVRQ2pMWGZXd09FVUlaZHlIUlNDSGIyRCtINDVGWHdPUUdJYWNSQnV6cWpBCmUyM2lNZEljT3E4OWhacXVVVkJGazlNTkQ4NUM5QXZ5djJWcUpmLzEwNDVlTm82Rk5GQkpSQ2R2amJ4YStkT1IKbW0wQlpiZFVYRHBTbUo2a3U3NmVNZkd2aUtBRDNmMk1GR3FRQVNnPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==" | base64 --decode > /var/run/iguazio/secrets/tls.crt
+  daemon-health.sh: |
+    #!/usr/bin/env bash
+
+    cp /usr/local/bin/healthz /var/run/iguazio/daemon_health/healthz
+  health_check.sh: |
+    #!/usr/bin/env bash
+
+    set -e
+
+    PORT="0"
+    URI_PATH=""
+    HTTP_METHOD="GET"
+    PROTOCOL="tcp"
+    HOST="127.0.0.1"
+    SOCKET_PORT="0"
+    SOCKET_TEST="0"
+    HTTP_TEST="0"
+
+    for i in "$@"
+    do
+    case $i in
+        -t=*|--socket-protocol=*)
+        PROTOCOL="${i#*=}"
+        ;;
+        -h=*|--host=*)
+        HOST="${i#*=}"
+        ;;
+        -p=*|--socket-port=*)
+        SOCKET_PORT="${i#*=}"
+        SOCKET_TEST="1"
+        ;;
+        -p=*|--port=*)
+        PORT="${i#*=}"
+        HTTP_TEST="1"
+        ;;
+        -u=*|--uri-path=*)
+        URI_PATH="${i#*=}"
+        ;;
+        -m=*|--http-method=*)
+        HTTP_METHOD="${i#*=}"
+        ;;
+    esac
+    done
+
+    if [ "${SOCKET_TEST}" == "1" ]; then
+        RC=echo < /dev/$PROTOCOL/$HOST/$SOCKET_PORT
+        if [ "$RC" -ne "0" ]; then
+            echo "Unable to communicate with [$HOST:$SOCKET_PORT] over [$PROTOCOL]. RC=$RC"
+            exit $RC
+        fi
+    fi
+
+    if [ "${HTTP_TEST}" == "1" ]; then
+        if [[ "${URI_PATH}" =~ ^/.* ]]; then
+            HEALTH_URL="http://${HOST}:${PORT}${URI_PATH}"
+        else
+            HEALTH_URL="http://${HOST}:${PORT}/${URI_PATH}"
+        fi
+
+        HTTP_STATUS=$(curl --disable --silent --fail --connect-timeout 10 --write-out "%{http_code}" --output /dev/null -X${HTTP_METHOD} "${HEALTH_URL}")
+        if [ "${HTTP_STATUS}" -eq "0" ]; then
+            echo "${HTTP_METHOD} for ${HEALTH_URL} failed (${HTTP_STATUS})"
+            exit 121
+        fi
+        if [ "${HTTP_STATUS}" -ge "400" ]; then
+            echo "${HTTP_METHOD} for ${HEALTH_URL} failed with status code ${HTTP_STATUS}"
+            exit 123
+        fi
+    fi
+    if [ -e "/igz/java/crash/.crash" ]; then
+        echo "Found java client crash - exiting"
+        exit 310
+    fi
+    CONFIGURED_V3IOD=$(grep "socket.host" $IGZ_DATA_CONFIG_FILE | cut -f2 -d"=")
+    if [ "${CONFIGURED_V3IOD}" != "CURRENT_NODE_IP" ]; then
+      /var/run/iguazio/daemon_health/healthz --host ${CONFIGURED_V3IOD}
+    fi
+  code-server.sh: |
+    #!/usr/bin/env bash
+    set -e
+
+
+    LOOKUP_SERVICE=v3iod-locator.default-tenant.svc:8080
+    LOOKUP_URL="http://${LOOKUP_SERVICE}/locate/v3iod"
+    LOCAL_V3IOD=$(curl --disable --silent --fail --connect-timeout 10 $LOOKUP_URL/$CURRENT_NODE_IP)
+
+    if [ "${LOCAL_V3IOD}" == "" ]; then
+        echo "v3iod address is empty"
+        exit 2
+    fi
+
+    mkdir -p /igz/java/conf
+    mkdir -p /igz/java/crash
+    cp /etc/config/v3io/* /igz/java/conf
+    sed -i "s/CURRENT_NODE_IP/$LOCAL_V3IOD/g" $IGZ_DATA_CONFIG_FILE
+
+    test -e ${HOME}/.bashrc || touch ${HOME}/.bashrc
+    mkdir -p ${HOME}/.igz
+    if [ ! -e "${HOME}/.igz/.getting-started" ]; then
+      curl -L http://172.31.6.161:8010/jupyter_tutorials/jupyter-tutorials -o /tmp/jupyter-tutorials
+      tar -C ${HOME} -xvf /tmp/jupyter-tutorials  --strip-components=1
+      rm -f /tmp/jupyter-tutorials
+      touch ${HOME}/.igz/.getting-started
+    fi
+
+    rm -rf ${IGUAZIO_HOME}/.presto_alias
+    touch ${IGUAZIO_HOME}/.presto_history
+    echo alias prestojks=\"PRESTO_PASSWORD=$V3IO_ACCESS_KEY presto-cli --truststore-path /var/run/iguazio/secrets/tls.jks --truststore-password 3e961ac794124246badce9a4926e9a19 --user $V3IO_USERNAME --password \$@\" >> ${IGUAZIO_HOME}/.presto_alias
+    echo alias prestow=\"prestojks --server https://presto-api-presto.default-tenant.app.saarc-test.iguazio-cd0.com \$@\" >> ${IGUAZIO_HOME}/.presto_alias
+    echo alias presto=\"prestow --catalog=v3io \$@\" >> ${IGUAZIO_HOME}/.presto_alias
+    if [ "$(grep --count 'PRESTO CONFIG' ${HOME}/.bashrc)" == "0" ]; then
+      echo "# ----- PRESTO CONFIG -----" >> ${HOME}/.bashrc
+      echo "source ${IGUAZIO_HOME}/.presto_alias" >> ${HOME}/.bashrc
+      echo "# --- END PRESTO CONFIG ---" >> ${HOME}/.bashrc
+    fi
+    echo alias hive=\"${HIVE_HOME}/bin/hive -hiveconf hive.exec.scratchdir=v3io://users/tmp/${V3IO_USERNAME}/hive -hiveconf hive.metastore.uris=thrift://hive-metastore:9083 \$@\" >> ${IGUAZIO_HOME}/.hive_alias
+
+    if [ "$(grep --count 'HIVE CONFIG' ${HOME}/.bashrc)" == "0" ]; then
+      echo "# ----- HIVE CONFIG -----" >> ${HOME}/.bashrc
+      echo "test -e ${IGUAZIO_HOME}/.hive_alias" && echo "source ${IGUAZIO_HOME}/.hive_alias" >> ${HOME}/.bashrc
+      echo "# --- END HIVE CONFIG ---" >> ${HOME}/.bashrc
+    fi
+
+    mkdir -p ${IGUAZIO_HOME}/bin/
+    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/v3ctl http://172.31.6.161:8010/binaries/v3ctl
+    chmod +x ${IGUAZIO_HOME}/bin/v3ctl
+
+    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/xcp http://172.31.6.161:8010/binaries/xcp
+    chmod +x ${IGUAZIO_HOME}/bin/xcp
+
+    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/tsdbctl http://172.31.6.161:8010/binaries/tsdbctl
+    chmod +x ${IGUAZIO_HOME}/bin/tsdbctl
+    rm -f ${IGUAZIO_HOME}/.tsdb_alias
+    if [ "${V3IO_API}" -a "${V3IO_ACCESS_KEY}" ]; then
+      echo alias tsdbctl=\"tsdbctl --server ${V3IO_API} --access-key ${V3IO_ACCESS_KEY}\" >> ${IGUAZIO_HOME}/.tsdb_alias
+      if [ "$(grep --count 'TSDB CONFIG' ${HOME}/.bashrc)" == "0" ]; then
+        echo "# ----- TSDB CONFIG -----" >> ${HOME}/.bashrc
+        echo "test -e ${IGUAZIO_HOME}/.tsdb_alias && source ${IGUAZIO_HOME}/.tsdb_alias" >> ${HOME}/.bashrc
+        echo "# --- END TSDB CONFIG ---" >> ${HOME}/.bashrc
+      fi
+    fi
+    if [ "$(grep --count 'LOGO CONFIG' ${HOME}/.bashrc)" == "0" ]; then
+      echo "# ----- LOGO CONFIG -----" >> ${HOME}/.bashrc
+      echo "echo ''" >> ${HOME}/.bashrc
+      echo "echo G1szODs1OzM3bSAgICAgICAgICAgJiYlJSUmICAgICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgJiMjJSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJiUjIyYgICAgICAgICAgICAgICAgICAgICAKG1szODs1OzM3bSAgICAgICAgICYjKC8vLy8vKCUgICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAmLy4uKiMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmKCwuLigmICAgICAgICAgICAgICAgICAgICAKG1szODs1OzM3bSAgICAgICAgJiMoLy8vLy8vLyglICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgJSgoJSYgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJiMoIyYgICAgICAgICAgICAgICAgICAgICAKG1szODs1OzM3bSAgICAgICAgJiMvLy8vLy8vLyglICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgJSglJiAgICAgIygvKioqLygjJiAgICAmIy8oJSAgICAgICAmKC8jJiAgICAmJSgvKioqLygjJiAgICAlKC8vLy8vLy8vLy8vIyYgJSMjJiAgICAgJiUoLyoqKi8oIyYgICAgICAKG1szODs1OzM3bSAgICAgICAgICUoLy8vLy8vKCMmICAgICYmJiAgICAgICAgIBtbMzg7NTs1bSAmLy4uLyYgICYoLi4uLiwuLiAuLCgmICAlLy4uKCYgICAgICAjLC4sJSAgJigsLiAuLiwuLiAuLC8gICAjKi4uLi4uLi4uLi4uLyYmKCwuKiUgICYoLC4gLi4sLi4uLiwvJSAgICAKG1szODs1OzM3bSAgICAgICAgICAmJSgvLygjJSAgICYjKCgoKCgjJSAgICAgIBtbMzg7NTs1bSAmLy4uKiMgJSouLCgmJiAmJSgsLi4qJSAlLy4uKCYgICAgICAjLC4sJSAlLy4uLCglJiAmJigqLi4lICAgJiYmJiYlKCouLi4vJiAgKCwuLCMgJi8uLiwoJSYgJiUoKi4uKiMgICAKG1szODs1OzM3bSAgICAgICAgICAgICUoKCMmICAgJSgvLy8vLy8vKCUgICAgIBtbMzg7NTs1bSAmLy4uKiMlLy4uIyAgICAgICAjKi4uLyYlLy4uKCYgICAgICAjLC4sJSYoLC4sIyYgICAgICAlKi4oJiAgICAgICUvLi4uLyUgICAgKCwuLCMmKC4uLCMgICAgICAgJSouLi8mICAKG1szODs1OzM3bSAgICAgICAgICAgICYjIyUgICAmIy8vLy8vLy8vLyMmICAgIBtbMzg7NTs1bSAmLy4uKiMlLy4uJSAgICAgICAlKi4uLyYlLy4uKCYgICAgICAjLC4qJSYoLi4qJSAgICAgICAmKi4qJiAgICAlLy4uLi8lICAgICAgKCwuLCMmKC4uLCUgICAgICAgJS8uLi8lICAKG1szODs1OzM3bSAgICAgICAgICAgICUoKCMmICAgJSgvLy8vLy8vKCUgICAgIBtbMzg7NTs1bSAmLy4uKiMmKCwuKCYgICAgICYoLi4uLyYmLy4uKiMgICAgICYvLi4qJSAjLC4uLyUgICAgICYoLC4qJiAgJSgsLi4qJSAgICAgICAgKCwuLCMmIywuLi8lICAgICAmKCwuLigmICAKG1szODs1OzM3bSAgICAgICAgICAmIygvLy8jJSAgICYjKCgoKCgjJiAgICAgIBtbMzg7NTs1bSAmLy4uKiMgJigsLiwqKCgoKiwuLi4uLyYgJSouLiwvKCMjLywuLiwjICAmIywuLiwvKCMjLywuLi4qJiYoLC4uLiwvKCgoKCgoIyYmKCwuLCMgICMsLi4sLygjIy8sLi4sKCYgICAKG1szODs1OzM3bSAgICAgICAgICUoLy8vLy8vKCMmICAgICAmICAgICAgICAgIBtbMzg7NTs1bSAmKCwuKiUgICAlKi4uLi4uLioqLC4uLyYgICYoKiwuLi4uLi4sKCUgICAgICUoKi4uLi4uLiovKi4vJiUqLi4uLi4uLi4uLi4uLCMmIywuLCMgICAmKCosLi4uLi4uKiglICAgICAKG1szODs1OzM3bSAgICAgICAgJiMvLy8vLy8vLyglICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgICYmJiAgJiUjJSUmJSUmJiYjLC4uKCYgICAgICYmJSUlJSYgICAgICAgICAgICYlJSUlJiAgICYmICAmJiYmJiYmJiYmJiYmJiAgICYmJiAgICAgICAmJiUlJSUmICAgICAgICAKG1szODs1OzM3bSAgICAgICAgJiMoLy8vLy8vLygmICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgICAgICAgJigsLiooIyUjKC8sLi4vJiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKG1szODs1OzM3bSAgICAgICAgICYlKCgvLy8oIyUgICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgICAgICAgICAlLC4uLi4uLi4sKiMmICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKG1szODs1OzM3bSAgICAgICAgICAgICYmJiYmICAgICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgICAgICAgICAgJiYlIyMjJSUmICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK | base64 --decode" >> ${HOME}/.bashrc
+      echo "echo ''" >> ${HOME}/.bashrc
+      echo "# --- END LOGO CONFIG ---" >> ${HOME}/.bashrc
+    fi
+
+    if [ "$(grep --count 'IGUAZIO CONFIG' ${HOME}/.bashrc)" == "0" ]; then
+      echo "# ----- IGUAZIO CONFIG -----" >> ${HOME}/.bashrc
+      echo alias ll=\"ls -lah --color\" >> ${HOME}/.bashrc
+      echo "source ${IGUAZIO_HOME}/bash-it.sh" >> ${HOME}/.bashrc
+      echo "# --- END IGUAZIO CONFIG ---" >> ${HOME}/.bashrc
+    fi
+
+    if [ "$(grep --count 'KUBECTL AUTOCOMPLETION' ${HOME}/.bashrc)" == "0" ]; then
+      echo "# ----- KUBECTL AUTOCOMPLETION -----" >> ${HOME}/.bashrc
+      echo "if [ -f /etc/bash_completion ]; then" >> ${HOME}/.bashrc
+      echo " . /etc/bash_completion" >> ${HOME}/.bashrc
+      echo "fi" >> ${HOME}/.bashrc
+      echo "if type -t _get_comp_words_by_ref > /dev/null 2>&1 && command -v kubectl > /dev/null 2>&1; then" >> ${HOME}/.bashrc
+      echo " source <(kubectl completion bash)" >> ${HOME}/.bashrc
+      echo "fi" >> ${HOME}/.bashrc
+      echo "# ----- END KUBECTL AUTOCOMPLETION -----" >> ${HOME}/.bashrc
+    fi
+
+    #    conda config --set always_softlink False
+    #    conda config --set always_copy True
+    #    conda config --add envs_dirs ${HOME}/.conda/envs
+    #    conda init bash 2>&1
+    mkdir -p ${HOME}/.conda/envs
+
+    echo "source ${HOME}/.bashrc" > ${HOME}/.bash_profile
+
+    touch ${HOME}/.viminfo
+    chmod a+w ${HOME}/.viminfo
+    echo ":set term=builtin_ansi" > ${HOME}/.vimrc
+
+    PIP_USER_PROFILE="vscode"
+
+    if [ "${PIP_USER_PROFILE}" == "" ]; then
+      PIP_USER_PATH="${HOME}/.pythonlibs"
+    else
+      PIP_USER_PATH="${HOME}/.pythonlibs/${PIP_USER_PROFILE}"
+    fi
+    mkdir -p ${PIP_USER_PATH}
+    export IGZ_ORIG_PIP_PREFIX="${PIP_USER_PATH}"
+    export IGZ_ORIG_PYTHONPATH="${PIP_USER_PATH}/lib/python3.7/site-packages:${PYTHONPATH}"
+    export PATH="${PATH}:${PIP_USER_PATH}/bin"
+    unset PYTHONPATH
+
+    #    source activate base
+
+    /usr/bin/code-server $@ 
+kind: ConfigMap
+metadata:
+  labels:
+    app: vscode
+    release: vscode
+  name: vscode
+  namespace: default-tenant

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  creationTimestamp: "2020-07-21T11:57:56Z"
+  name: vscode
+  namespace: {{ .Values.namespace }}
+spec:
+  rules:
+  - host: vscode.{{ .Values.igzDomain }}
+    http:
+      paths:
+      - backend:
+          serviceName: code-server-{{ .Values.user }}
+          servicePort: 80
+        path: /
+  tls:
+  - hosts:
+    - vscode.{{ .Values.igzDomain }}
+    secretName: ingress-tls

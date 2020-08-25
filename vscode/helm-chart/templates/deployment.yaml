@@ -1,0 +1,138 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: code-server-{{ .Values.user }}
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: code-server-{{ .Values.user }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: code-server-{{ .Values.user }}
+    spec:
+      serviceAccountName: code-server-{{ .Values.user }}
+      automountServiceAccountToken: true
+      containers:
+      - name: code-server
+        image: vscode:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          name: code-server
+        securityContext:
+          privileged: true
+        command:
+        - /bin/bash
+        - /etc/config/vscode/code-server.sh
+        args:
+        - --bind-addr 0.0.0.0:8080 
+#        - --extensions-dir /User/.local/share/code-server/extensions 
+        - --auth none 
+        - /User
+        env:
+        - name: PASSWORD
+          value: {{ .Values.password }}
+        - name: SHELL
+          value: /bin/bash
+        - name: V3IO_API
+          value: v3io-webapi.{{ .Values.namespace }}.svc:8081
+        - name: V3IO_FRAMESD
+          value: framesd.{{ .Values.namespace }}.svc:8080
+        - name: IGZ_NAMESPACE_DOMAIN
+          value: {{ .Values.namespace }}.{{ .Values.igzDomain }}
+        - name: IGZ_VERSION
+          value: {{ .Values.igzVersion }}
+        - name: KF_PIPELINES_UI_ENDPOINT
+          value: dashboard.{{ .Values.igzDomain }}/ml-pipelines
+        - name: virtual_env_path
+          value: /v3io/users/admin/virtual_env/
+        - name: IGZ_DATA_CONFIG_FILE
+          value: /igz/java/conf/v3io.conf
+        - name: CURRENT_NODE_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+        - name: V3IO_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: jupyter-v3io-auth
+        - name: V3IO_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: accessKey
+              name: jupyter-v3io-auth
+        - name: IGUAZIO_HOME
+          value: /User
+        - name: HOME
+          value: /home/iguazio
+        - name: V3IO_HOME
+          value: users/admin
+        - name: V3IO_HOME_URL
+          value: v3io://users/admin
+
+        volumeMounts:
+        - mountPath: /User/v3io
+          name: v3io-fuse
+        - mountPath: /etc/config/vscode
+          name: config-volume
+        - mountPath: /var/run/iguazio/daemon_health
+          name: daemon-health
+        - mountPath: /var/run/iguazio/secrets
+          name: java-cert
+        - mountPath: /dev/shm
+          name: shm
+        - mountPath: /var/run/iguazio/dayman
+          name: v3iod-comm
+        - mountPath: /etc/config/v3io
+          name: v3io-config
+        - mountPath: /igz/java/auth
+          name: v3io-auth
+        - mountPath: /v3io
+          name: v3io-fuse
+        - mountPath: /User
+          name: v3io-fuse
+          subPath: users//admin
+
+#        resources:
+#          limits:
+#            memory: 1Gi
+#          requests:
+#            memory: 1Gi
+
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: vscode
+        name: config-volume
+      - emptyDir: {}
+        name: daemon-health
+      - emptyDir: {}
+        name: java-cert
+      - hostPath:
+          path: /dev/shm/{{ .Values.namespace }}
+          type: ""
+        name: shm
+      - hostPath:
+          path: /var/run/iguazio/dayman/{{ .Values.namespace }}
+          type: ""
+        name: v3iod-comm
+      - configMap:
+          defaultMode: 420
+          name: jupyter-v3io-config
+        name: v3io-config
+      - name: v3io-auth
+        secret:
+          defaultMode: 420
+          secretName: jupyter-v3io-auth
+      - flexVolume:
+          driver: v3io/fuse
+          options:
+            dirsToCreate: '[{"name": "users//admin", "permissions": 488}]'
+          secretRef:
+            name: jupyter-v3io-fuse
+        name: v3io-fuse

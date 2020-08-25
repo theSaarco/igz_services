@@ -1,0 +1,134 @@
+apiVersion: v1
+data:
+  create-cert.sh: |
+    #!/bin/bash
+
+    set -e
+
+    echo -n "MIIOZQIBAzCCDh4GCSqGSIb3DQEHAaCCDg8Egg4LMIIOBzCCBWsGCSqGSIb3DQEHAaCCBVwEggVYMIIFVDCCBVAGCyqGSIb3DQEMCgECoIIE+zCCBPcwKQYKKoZIhvcNAQwBAzAbBBSzUs7mwJWW3PPvmot5ZnGtGp00WAIDAMNQBIIEyI7Mh0bThPgxyhQQFuI4GNwcfVfyaDvkP3a58wj9Nd6shx6aGvE+2gSoOcZrCxznx7BtCl3oG+jPB4l+2bnz2cJSNqJU4Mhn7NKVsYUTGNFbjK+CM/GoLWtkMCR1elpLX3TT+ArMKZilHfzea0PyjlHI+dp02aRwoO61h/ExfH0at9T+6OoiKR4N3Fau4EStuHy1Qcku2Utb1y7ztAh6gOoL/9DuzIejBLaNtb1od1YLPz78r0UPqEVsJlVyL1mndDQ3qoaIA37gGdkZThL6eGaqhu3Q/art4yKcxBfG7jXaCi+v06i/OBfA+vzdO2tIxygre8b3b9zQfgMFnYBX3DbE5ESnbD5yG44OyzNV6XSEEVFoRegIt0PwcrskeUPYua/OPjyzvVl8y8Sn6KWDH9DJ72DryMpuY4YVLAKd/xkDV7qqv+TzYQElgMJXFtAlYXMZaLalPRg/4kyKmRXRMIeYVMvRHJVkpHY0AUaELehznPUtqO6UDk/3ITe88Uf+E+RChgMBYcF2iZbP0HhMkCPrV1ZIsc2Pp/lhXbW4DJGgMimunxk4QXYZ2i2ZCKG1HqJIW1XsrIfY5PMPY+9XkryaJxyoBXvmZZQainh3NpAw45bgk/4XmXs6rhUsSgcu5pf0vFD5APSToKXAnKypgy/T8ilk+7rfbTjT+7S51WYgb6KLJLETVAzUGyl4dtmyQO5Gx3Pa1UboJkXJ/i2s2E2IOHoWBgErOJuo7eY8L6mNO2Fg/H/Q9Y3i4L+tkJXq76Hl9XT02f+ZjCNlSu7lzQUeI96PCVHQQVyZ82k6rnwXcnQfI1umQSli48TQtsA4RcwwR0vR4b/d+YJjQKecZfigMGW9O+ubbquZINt6y1A0/NlW7JNKyaJy6P3j7N1vTEVk8pDva2tD8dqLm1SHYspOQ1KUm/OrWzVwqsE5Cqs54qGYw6cOecYwHFUty4OuTDKcRMaU1n3VFa990s0eeyxw9xnSK16I62mEHaE8cHrurbdTCde8jt0jnYYD6Vl25kOaDOBt7IT0Dt94SFGA+zoyvGKkrRany70QZw3t13h5M3uWXF3HiXXhnz+qymOFEGFYRw/mzWmlVDgrt44fjmsyYT7ZBJBTJK/+q2s0cFPMS4EQi7HU377yiS5EkaDAfs/BLs561AHUrrz4pbcZUNtHAQYymWYBPM8H1nQS+FNw6kE0zv4YxfxvV4PFKtT0npmWEAMl2tibAuy3NAYRHKGFHolbnHPsud7cI5PgVrc7pzXEPZ628c+wNDbKpZNf93WnfqgoBHNXBEIoczWXhJvtY5+d3wc7GpCOhbTRqvpONv/5E0+3FBJaQI2HI2pjXOnbczVKNHJA98JGE7pto534mV2mG0eOBZIIp8xUQZVc7Jgv2nEBAvt4rKMJDFBMW6g7mkHX6Rt/NrppcVsOuWx0VvF5onXfRGqCT+VAbLGRU2cFnifuqTCtS70tGyfUPnyTb/WzqGtPiAMk3Kpxxi1aH8zrnZ73wGlphKAX++ATpNrj6a7LWbBbSByMF+GKcN4K2DFu5GNVN2IwEgUM9ap4eeIW6hjMAvoUgKkDj7ceHTOWwQyM4CLXegtlAhaXZNcdtnHtwFahpHaZso9dJ92KrXGjtgalczFCMB0GCSqGSIb3DQEJFDEQHg4AaQBnAHUAYQB6AGkAbzAhBgkqhkiG9w0BCRUxFAQSVGltZSAxNTk1ODMyMzYwOTY0MIIIlAYJKoZIhvcNAQcGoIIIhTCCCIECAQAwggh6BgkqhkiG9w0BBwEwKQYKKoZIhvcNAQwBBjAbBBRWz3vc2qj4Dxz1tZN52czj5/K5VgIDAMNQgIIIQEWLZ6kIGyqcIpELndydv/J8Twta2VlmxOxP25dEI6q5n/RK0jEJsUg+690beAPeuG0sLr5ilnj1GbF9Guoey5CKFfvzXsUoko/JzBoYx8Fp1siOYKBs6QYAqvEgC08A8e1RYNIm2v3iPf+82vv0Si8epc/+d9B+SJZDGgmXn3aF8eMrPGqGEEeYMrQVRDNTC76E0munl/Bl80F22xF4Bm8Vpk4tYmuwSJ8tdqBIoFuJyCaKUZog9Hn6TjOBIQhiFg42c8tlungfOh5N58YLYQX1wMzjrQ3bx9zY5wJ0Dk5XdAnNcY5TRZ/2fvADmOtkm7M3zmubJ9pC4JWzC4+5KNz/bc2WIRQ8ZUFrd9EOcwUexMfRXxj8OtItpv1s/HuxA65ap7TTqMvMUWK5s+DbyXnR1cAl8O/gySivukEm6qfgrUR+YdYCkUU6EiMooWFvhNv56r85O2vjH09yarIRzrdh95OFE/+VvDwbfUoo3nebnsNdTIvxayCsvuXubOc1fJdOlEsYvSi8muj+55UsXVHUfFzDBRdJvh6quwprPSryVaTQiv3f+TADkdSKjFSxb37tZZ4eeVT3L6bTCJbG9fCVEWYDFTRGMH0oqWgJTRfflorCFfbR6CFqgx1T8wdbTqgLmfaxOVwN+2wRt05x8IczUSOkZbk7AojrtThK2V0Rht91gjxhk8llv8gkoIrH9uK7D+y3vz/SZ4xctAfUVPN9N8QWlV2PfvR4yctrxu/bEyb3IGe3rEa1MlVLNM9syo0HmCrpbCWs+UI5vIyfWRqUj5QKsRDT8PkFYdttxTe4hczF60HBv8OuFKudCj91skh/IyYv8/mzSaDVcUN43fGkN1wUSTEYbtRG6VZzKnNfQJuaznq1VEE2H/EmpDacyKog0TNPcuBqmXcKHpxCCpA7NdwedxmCGmqFGfTy64M8pq0IOA0ACu6X7D1Bu4irzMANCCh/sFnoMcqjOkkOCB+mWuVNzSP7iY8gDWrkyxxKAu+jg7EIBkEjwlcjqutu1tPANvr+Icjdf9CQYcylfi4OA6lrv9uNESnLtVncKr2ljuPhP3whIxIjuQrvRLRjXwd/pNeO2oX38O5NV6Bgwlj6pzEC5Xru3S2UFG0XcNG2jrxAHT7n7opvsKyavCVnfgPzkB8RXn9/NhPeoW9AiizB5/Lzw4S7k901jesE0E/D5ZUs8DrV9Do9qe+NE4xkFMmB+sVc5Oz2A0qYDCXCHnXdJ5no/DefcY4YNmLn7wTofQpHEgvZmBRfm9/Lx4/r6Ib7Hd/3hLtlK/GQB/LUx+AGpyZHMh/BILB87tLsRQV5q9rLgN9Syq3M9rVbIqrdBJSmXmixcgXHVrX9iVs2RKp3d93kmAKrV9J3bWMoUwCteF6M4xbLvmRrSpzUxH35PlFp0TBELTbqATtsYkuPOMrnpox8OXap0l5DSx7UHquklwAu6tNMPvlPFWIWJmMv7Suk8TB9gLL0IiuJ3CulP6BR7D+rzszZdDLN8EzPeth2h79/94H++xllGC+3ZqBneQDvMrQo35Z0eqJZLy26QPrqMIFiy9Z4Dg7fFjcYFvlIVWCKtVYTnSLSQvFfQK0c0VeMFqxbgiYxXkAUEko/9juiA0rCtKQ1QeP9pW5RzPwe12xR+JQHsb60IfxYqmh/pDqLw88QLjYQs1vimpF/4WVGH5zeCji/R2VYwNH1RHunRSWAiC+rxw0EGNoueBol8v8LMtkPQ0xhNxaNKSdDwtsUpi920eHVS10b3uV0rOWyuRK2h8HbjrCrYFb1cPBlqVU1CL3yAynBWC7FhkyWWWe/Y7j2Vf0xl5PsVR6ZwVdKG5ldJv3+bnLw6dvEoEVCOY1hjpEHYSxLwefrK4oC4WClmVydt6+PMyAJgB6iARk/zib9B8JPRo5rtQKyd8W9GNYg3IKnZWnCYXwrht4aftkKgRElnjQkXgqgonzck0Zo/gv6Yp+PEo1eNQjNMgOulo8UkOlRiFvChEOwWyavdLuCX6BEHwstQE8lU4XNFGm/KObVmAiAcaKn7BTA0tOsPkNab+ToVZIRPi4jcbB7SiOgkVHz1+VLOnuM+zD82Ri8pw8XZbmY6jIPPZAX2ENMuUc3kkXwrTIaP88APyvPENw26ZQGFdeHHQBWUZUAe8B/+yB05F3B8/0f/Sd5rULNcpgSiC1CvUztrzIPp+T00J4WKl2aaaLgktvZna48JPQ4eEV4cNmGYA10e0Qr4KGBeb+itk9gebuSJ3HCTJYmqsqYL5HrU/0uHnSstVQqtCfH6JCx0w80G5nl35Fgb1oxlPsYv8OB9WmFtRdzNJJC8x/6meksPIzT9De7HtSUxmBx3TDt7ZN/Ke8MjAJin4NbDv7w+JBFUlk850umvimDnkT6PGWqoIecg0m26GWcc7+lPXRws7Qz1tj+Gp25TO+U+eIwW5iCLfsY1sBPpwAFAV8D+MrYiTCq2+3RV8IUrGYL86wGUOucg1hMJoEZ+RlrTAQDxpkb/0u0RlW7Px07jdTeKqKk4gZtgxO5EnXhcYdDv1FKwlHEA1qCyBgd63VN/t1zUaj4bMwWaUC52csBfbYzicknP928zfl25bwA3fgCfRGQsuyyEmD5D9ocO0rs1BVWZmsZcac0FZRvMQ85toZUrP3X7vosW7HSu6PDEWTd9lsDKgkYdbAz7aKgcyA0v7WxYXPjW3VT8W3ACI9ZvgVseXKRG/ObS+TCYU7Zi+RSAdvVVyCYx09azbDouIIyoD9VhOC6S39yWHDyoSWi3HUDH2vlHjzaVpNs2sLCtBtT/OXUZlkhn1QiINLx8saxJzA+MCEwCQYFKw4DAhoFAAQUUTlqW5F7x5t0zFffBnQaZ+SFdvYEFIfwbZLItBp8kvzwLsPuztaTzrLAAgMBhqA=" | base64 --decode > /var/run/iguazio/secrets/tls.jks
+  daemon-health.sh: |
+    #!/usr/bin/env bash
+
+    cp /usr/local/bin/healthz /var/run/iguazio/daemon_health/healthz
+  health_check.sh: |
+    #!/usr/bin/env bash
+    set -e
+
+    if [ -e "/igz/java/crash/.crash" ]; then
+        echo "Found java client crash - exiting"
+        exit 310
+    fi
+    CONFIGURED_V3IOD=$(grep "socket.host" $IGZ_DATA_CONFIG_FILE | cut -f2 -d"=")
+    if [ "${CONFIGURED_V3IOD}" != "CURRENT_NODE_IP" ]; then
+      /var/run/iguazio/daemon_health/healthz --host ${CONFIGURED_V3IOD}
+    fi
+  v3io-shell.sh: |
+    #!/usr/bin/env bash
+    set -e
+
+
+    LOOKUP_SERVICE=v3iod-locator.{{ .Values.namespace }}.svc:8080
+    LOOKUP_URL="http://${LOOKUP_SERVICE}/locate/v3iod"
+    LOCAL_V3IOD=$(curl --disable --silent --fail --connect-timeout 10 $LOOKUP_URL/$CURRENT_NODE_IP)
+
+    if [ "${LOCAL_V3IOD}" == "" ]; then
+        echo "v3iod address is empty"
+        exit 2
+    fi
+
+    mkdir -p /igz/java/conf
+    mkdir -p /igz/java/crash
+    cp /etc/config/v3io/* /igz/java/conf
+    sed -i "s/CURRENT_NODE_IP/$LOCAL_V3IOD/g" $IGZ_DATA_CONFIG_FILE
+
+    test -e ${HOME}/.bashrc || touch ${HOME}/.bashrc
+    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/v3ctl http://{{ .Values.igzV3ioUrl }}:8010/binaries/v3ctl
+    chmod +x ${IGUAZIO_HOME}/bin/v3ctl
+
+    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/xcp http://{{ .Values.igzV3ioUrl }}:8010/binaries/xcp
+    chmod +x ${IGUAZIO_HOME}/bin/xcp
+
+    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/tsdbctl http://{{ .Values.igzV3ioUrl }}:8010/binaries/tsdbctl
+    chmod +x ${IGUAZIO_HOME}/bin/tsdbctl
+    rm -f ${IGUAZIO_HOME}/.tsdb_alias
+    if [ "${V3IO_API}" -a "${V3IO_ACCESS_KEY}" ]; then
+      echo alias tsdbctl=\"tsdbctl --server ${V3IO_API} --access-key ${V3IO_ACCESS_KEY}\" >> ${IGUAZIO_HOME}/.tsdb_alias
+      if [ "$(grep --count 'TSDB CONFIG' ${HOME}/.bashrc)" == "0" ]; then
+        echo "# ----- TSDB CONFIG -----" >> ${HOME}/.bashrc
+        echo "test -e ${IGUAZIO_HOME}/.tsdb_alias && source ${IGUAZIO_HOME}/.tsdb_alias" >> ${HOME}/.bashrc
+        echo "# --- END TSDB CONFIG ---" >> ${HOME}/.bashrc
+      fi
+    fi
+
+    # Create /tmp in default container if not exists and set premissions to 777 (See: IG-11583)
+    hadoop fs -test -e v3io://users/tmp || hadoop fs -mkdir v3io://users/tmp
+    hadoop fs -chmod 777 v3io://users/tmp
+    rm -rf ${IGUAZIO_HOME}/.presto_alias
+    touch ${IGUAZIO_HOME}/.presto_history
+    echo alias prestojks=\"PRESTO_PASSWORD=$V3IO_ACCESS_KEY presto-cli --truststore-path /var/run/iguazio/secrets/tls.jks --truststore-password eac8b4b9848a48a18ace65e5df9597f6 --user $V3IO_USERNAME --password \$@\" >> ${IGUAZIO_HOME}/.presto_alias
+    echo alias prestow=\"prestojks --server https://presto-api-presto.{{ .Values.igzDomain }} \$@\" >> ${IGUAZIO_HOME}/.presto_alias
+    echo alias presto=\"prestow --catalog=v3io \$@\" >> ${IGUAZIO_HOME}/.presto_alias
+    if [ "$(grep --count 'PRESTO CONFIG' ${HOME}/.bashrc)" == "0" ]; then
+      echo "# ----- PRESTO CONFIG -----" >> ${HOME}/.bashrc
+      echo "source ${IGUAZIO_HOME}/.presto_alias" >> ${HOME}/.bashrc
+      echo "# --- END PRESTO CONFIG ---" >> ${HOME}/.bashrc
+    fi
+    echo alias hive=\"${HIVE_HOME}/bin/hive -hiveconf hive.exec.scratchdir=v3io://users/tmp/${V3IO_USERNAME}/hive -hiveconf hive.metastore.uris=thrift://hive-metastore:9083 \$@\" >> ${IGUAZIO_HOME}/.hive_alias
+
+    if [ "$(grep --count 'HIVE CONFIG' ${HOME}/.bashrc)" == "0" ]; then
+      echo "# ----- HIVE CONFIG -----" >> ${HOME}/.bashrc
+      echo "test -e ${IGUAZIO_HOME}/.hive_alias" && echo "source ${IGUAZIO_HOME}/.hive_alias" >> ${HOME}/.bashrc
+      echo "# --- END HIVE CONFIG ---" >> ${HOME}/.bashrc
+    fi
+
+    echo "echo ''" >> ${HOME}/.bashrc
+    if [ "$(grep --count 'LOGO CONFIG' ${HOME}/.bashrc)" == "0" ]; then
+      echo "# ----- LOGO CONFIG -----" >> ${HOME}/.bashrc
+      echo "echo ''" >> ${HOME}/.bashrc
+      echo "echo G1szODs1OzM3bSAgICAgICAgICAgJiYlJSUmICAgICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgJiMjJSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJiUjIyYgICAgICAgICAgICAgICAgICAgICAKG1szODs1OzM3bSAgICAgICAgICYjKC8vLy8vKCUgICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAmLy4uKiMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmKCwuLigmICAgICAgICAgICAgICAgICAgICAKG1szODs1OzM3bSAgICAgICAgJiMoLy8vLy8vLyglICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgJSgoJSYgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJiMoIyYgICAgICAgICAgICAgICAgICAgICAKG1szODs1OzM3bSAgICAgICAgJiMvLy8vLy8vLyglICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgJSglJiAgICAgIygvKioqLygjJiAgICAmIy8oJSAgICAgICAmKC8jJiAgICAmJSgvKioqLygjJiAgICAlKC8vLy8vLy8vLy8vIyYgJSMjJiAgICAgJiUoLyoqKi8oIyYgICAgICAKG1szODs1OzM3bSAgICAgICAgICUoLy8vLy8vKCMmICAgICYmJiAgICAgICAgIBtbMzg7NTs1bSAmLy4uLyYgICYoLi4uLiwuLiAuLCgmICAlLy4uKCYgICAgICAjLC4sJSAgJigsLiAuLiwuLiAuLC8gICAjKi4uLi4uLi4uLi4uLyYmKCwuKiUgICYoLC4gLi4sLi4uLiwvJSAgICAKG1szODs1OzM3bSAgICAgICAgICAmJSgvLygjJSAgICYjKCgoKCgjJSAgICAgIBtbMzg7NTs1bSAmLy4uKiMgJSouLCgmJiAmJSgsLi4qJSAlLy4uKCYgICAgICAjLC4sJSAlLy4uLCglJiAmJigqLi4lICAgJiYmJiYlKCouLi4vJiAgKCwuLCMgJi8uLiwoJSYgJiUoKi4uKiMgICAKG1szODs1OzM3bSAgICAgICAgICAgICUoKCMmICAgJSgvLy8vLy8vKCUgICAgIBtbMzg7NTs1bSAmLy4uKiMlLy4uIyAgICAgICAjKi4uLyYlLy4uKCYgICAgICAjLC4sJSYoLC4sIyYgICAgICAlKi4oJiAgICAgICUvLi4uLyUgICAgKCwuLCMmKC4uLCMgICAgICAgJSouLi8mICAKG1szODs1OzM3bSAgICAgICAgICAgICYjIyUgICAmIy8vLy8vLy8vLyMmICAgIBtbMzg7NTs1bSAmLy4uKiMlLy4uJSAgICAgICAlKi4uLyYlLy4uKCYgICAgICAjLC4qJSYoLi4qJSAgICAgICAmKi4qJiAgICAlLy4uLi8lICAgICAgKCwuLCMmKC4uLCUgICAgICAgJS8uLi8lICAKG1szODs1OzM3bSAgICAgICAgICAgICUoKCMmICAgJSgvLy8vLy8vKCUgICAgIBtbMzg7NTs1bSAmLy4uKiMmKCwuKCYgICAgICYoLi4uLyYmLy4uKiMgICAgICYvLi4qJSAjLC4uLyUgICAgICYoLC4qJiAgJSgsLi4qJSAgICAgICAgKCwuLCMmIywuLi8lICAgICAmKCwuLigmICAKG1szODs1OzM3bSAgICAgICAgICAmIygvLy8jJSAgICYjKCgoKCgjJiAgICAgIBtbMzg7NTs1bSAmLy4uKiMgJigsLiwqKCgoKiwuLi4uLyYgJSouLiwvKCMjLywuLiwjICAmIywuLiwvKCMjLywuLi4qJiYoLC4uLiwvKCgoKCgoIyYmKCwuLCMgICMsLi4sLygjIy8sLi4sKCYgICAKG1szODs1OzM3bSAgICAgICAgICUoLy8vLy8vKCMmICAgICAmICAgICAgICAgIBtbMzg7NTs1bSAmKCwuKiUgICAlKi4uLi4uLioqLC4uLyYgICYoKiwuLi4uLi4sKCUgICAgICUoKi4uLi4uLiovKi4vJiUqLi4uLi4uLi4uLi4uLCMmIywuLCMgICAmKCosLi4uLi4uKiglICAgICAKG1szODs1OzM3bSAgICAgICAgJiMvLy8vLy8vLyglICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgICYmJiAgJiUjJSUmJSUmJiYjLC4uKCYgICAgICYmJSUlJSYgICAgICAgICAgICYlJSUlJiAgICYmICAmJiYmJiYmJiYmJiYmJiAgICYmJiAgICAgICAmJiUlJSUmICAgICAgICAKG1szODs1OzM3bSAgICAgICAgJiMoLy8vLy8vLygmICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgICAgICAgJigsLiooIyUjKC8sLi4vJiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKG1szODs1OzM3bSAgICAgICAgICYlKCgvLy8oIyUgICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgICAgICAgICAlLC4uLi4uLi4sKiMmICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKG1szODs1OzM3bSAgICAgICAgICAgICYmJiYmICAgICAgICAgICAgICAgICAgIBtbMzg7NTs1bSAgICAgICAgICAgJiYlIyMjJSUmICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK | base64 --decode" >> ${HOME}/.bashrc
+      echo "echo ''" >> ${HOME}/.bashrc
+      echo "echo ''" >> ${HOME}/.bashrc
+      echo "# --- END LOGO CONFIG ---" >> ${HOME}/.bashrc
+    fi
+
+    mkdir -p ${HOME}/.pythonlibs
+    export PIP_PREFIX="${HOME}/.pythonlibs"
+    export PYTHONPATH="${HOME}/.pythonlibs/lib/python3.6/site-packages:${PYTHONPATH}"
+    export PATH="${PATH}:${HOME}/.pythonlibs/bin"
+
+    if [ "$(grep --count 'IGUAZIO CONFIG' ${HOME}/.bashrc)" == "0" ]; then
+      echo "# ----- IGUAZIO CONFIG -----" >> ${HOME}/.bashrc
+      echo alias ll=\"ls -lah --color\" >> ${HOME}/.bashrc
+      echo "source ${IGUAZIO_HOME}/bash-it.sh" >> ${HOME}/.bashrc
+      echo "# --- END IGUAZIO CONFIG ---" >> ${HOME}/.bashrc
+    fi
+
+    if [ "$(grep --count 'KUBECTL AUTOCOMPLETION' ${HOME}/.bashrc)" == "0" ]; then
+      echo "# ----- KUBECTL AUTOCOMPLETION -----" >> ${HOME}/.bashrc
+      echo "if [ -f /etc/bash_completion ]; then" >> ${HOME}/.bashrc
+      echo " . /etc/bash_completion" >> ${HOME}/.bashrc
+      echo "fi" >> ${HOME}/.bashrc
+      echo "if type -t _get_comp_words_by_ref > /dev/null 2>&1 && command -v kubectl > /dev/null 2>&1; then" >> ${HOME}/.bashrc
+      echo " source <(kubectl completion bash)" >> ${HOME}/.bashrc
+      echo "fi" >> ${HOME}/.bashrc
+      echo "# ----- END KUBECTL AUTOCOMPLETION -----" >> ${HOME}/.bashrc
+    fi
+
+    # SSH related
+    cp /var/run/iguazio/secrets/ssh/* /igz/.ssh 
+    chown iguazio:iguazio /igz/.ssh/*
+    chmod 0644 /igz/.ssh/*
+
+    cp /var/run/iguazio/secrets/ssh/* /root/.ssh
+    chmod 0644 /root/.ssh/*
+
+    service ssh restart
+    # END SSh related
+
+    ttyd bash
+kind: ConfigMap
+metadata:
+  labels:
+    app: ssh
+  name: ssh
+  namespace: {{ .Values.namespace }}

@@ -1,0 +1,10 @@
+# Kubernetes namespace
+namespace: "default-tenant"
+
+# Basic Authentication Username
+user: "saarc"
+
+# Iguazio domain & version
+igzDomain: "default-tenant.app.saarc-test.iguazio-cd0.com"
+igzVersion: "2.10_b5165_20200718002231"
+igzV3ioUrl: "172.31.6.161"

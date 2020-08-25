@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: code-server-{{ .Values.user }}
+  namespace: {{ .Values.namespace }}
+spec:
+  type: ClusterIP
+  selector:
+    app: code-server-{{ .Values.user }}
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: code-server
+    name: code-server-{{ .Values.user }}
