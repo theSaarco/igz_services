@@ -104,7 +104,7 @@ data:
     test -e ${HOME}/.bashrc || touch ${HOME}/.bashrc
     mkdir -p ${HOME}/.igz
     if [ ! -e "${HOME}/.igz/.getting-started" ]; then
-      curl -L http://172.31.6.161:8010/jupyter_tutorials/jupyter-tutorials -o /tmp/jupyter-tutorials
+      curl -L http://{{ .Values.curlIp }}/jupyter_tutorials/jupyter-tutorials -o /tmp/jupyter-tutorials
       tar -C ${HOME} -xvf /tmp/jupyter-tutorials  --strip-components=1
       rm -f /tmp/jupyter-tutorials
       touch ${HOME}/.igz/.getting-started
@@ -129,13 +129,13 @@ data:
     fi
 
     mkdir -p ${IGUAZIO_HOME}/bin/
-    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/v3ctl http://172.31.6.161:8010/binaries/v3ctl
+    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/v3ctl http://{{ .Values.curlIp }}/binaries/v3ctl
     chmod +x ${IGUAZIO_HOME}/bin/v3ctl
 
-    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/xcp http://172.31.6.161:8010/binaries/xcp
+    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/xcp http://{{ .Values.curlIp }}/binaries/xcp
     chmod +x ${IGUAZIO_HOME}/bin/xcp
 
-    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/tsdbctl http://172.31.6.161:8010/binaries/tsdbctl
+    curl --disable -sSL -o ${IGUAZIO_HOME}/bin/tsdbctl http://{{ .Values.curlIp }}/binaries/tsdbctl
     chmod +x ${IGUAZIO_HOME}/bin/tsdbctl
     rm -f ${IGUAZIO_HOME}/.tsdb_alias
     if [ "${V3IO_API}" -a "${V3IO_ACCESS_KEY}" ]; then
@@ -198,6 +198,10 @@ data:
     unset PYTHONPATH
 
     export PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+
+    if [ ! -e "${HOME}/.kube/config" ]; then
+      cp /home/iguazio/.kube/config ${HOME}/.kube/config      
+    fi
 
     source activate base
 
