@@ -9,7 +9,7 @@ user: "saarc"
 password: "password"
 
 # Iguazio domain & version
-igzDomain: default-tenant.app.saarc-test.iguazio-cd1.com 
+igzDomain: default-tenant.app.saarc.iguazio-cd1.com 
 igzVersion: 2.10_b74_20200830163329
 
-curlIp: 172.31.15.71:8010
+curlIp: 172.31.7.121:8010
