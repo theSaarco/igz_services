@@ -30,8 +30,8 @@ The code-server pod is packaged in a Docker container. This container has the fo
 * Python 3.7
 * Python packages:
   * pip
-  *jupyter
-  *pylint
+  * jupyter
+  * pylint
 * v3io fuse support (installed by k8s as part of the deployment using flexVolume) Same as in the Jupyter service (and others) - /v3io as root directory for the various containers
 * A ~/.kube/config file is generated - this is optional and is done to support the VSCode k8s extension. The extension reads the kube config to figure out what to look at. kubectl knows how to access k8s by default without any configuration, but that's not good enough for the extension
 * Conda (actually miniconda) for Python package and env management, including a base env that is exactly the same as the one used in Jupyter. Conda is configured to view Conda environemnts created by the user while using other IDEs (such as Jupyter)
@@ -48,12 +48,17 @@ The following components are installed as part of the Helm chart:
 * External access methods:
   * An Ingress exposing the code-server as an external URL
   * A NodePort exposing the same through the app-cluster nodes using a specific port
-  > **Note:** The NodePort is temporary, and is there since it's easier to overcome some certificate management issues. In the production code this will not remain as an option
+  
+  > ## **Note:** The NodePort is essentially a **security hole** and must never be deployed in production
+  >
+  > The NodePort is temporary, and is only there since it's easier to overcome some certificate management issues. In the production code this will not remain as an option. It's important to note that the NodePort doesn't go through the Iguazio ingress and therefore doesn't perform any user authentication.
 
 ## Deployment steps
 
 To deploy the vscode helm chart, the following steps are needed:
 
+0. You need to have an Iguazio system running. It is recommended to have the system deployed with a `production` certificate, otherwise it will limit the vscode functionality and you will need to use NodePort to access it
+   * The reason is that the code-server implementation runs within the browser and uses something called a `service worker` to execute various tasks on the container itself. A service worker can only be activated on a trusted webpage, and if using a `trial` certificate (which is an invalid, self-signed cert) it will not run. The main result would be that you cannot work on Jupyter notebooks, but there will be other issues
 1. Build the docker image from the Dockerfile in `docker/Dockerfile`, and tagging it `vscode:latest`. For example using the following command:
 
     ```bash
@@ -62,6 +67,7 @@ To deploy the vscode helm chart, the following steps are needed:
     ```
 
 2. Modify the values in the `helm-chart/values.yaml` file, providing the namespace where the service is to be deployed (usually `default-tenant`), the Iguazio domain, and the version
+   * The `curlIp` parameter is somewhat difficult to obtain. It needs to point at the data-cluster nginx server, and is used to download several executables from there. How to retrieve this information is **TBD**
 3. Install the Helm chart provided in `helm-chart/Chart.yaml`, giving it a name per your choosing, for example to name it vscode:
 
     ```bash
@@ -78,14 +84,22 @@ To deploy the vscode helm chart, the following steps are needed:
 
 5. Once the Helm chart was installed, all the k8s resources needed for the code-server to run are deployed and you can access the code-server through:
 
-* `http://vscode.<Iguazio domain>` - this uses the ingress to access the code-server
-* `http://<app-node IP>:<vscode node-port>` - this uses the NodePort interface to access the service
+* `http://vscode.<Iguazio domain>` - this uses the ingress to access the code-server.  
+  To verify the URL of the vscode service, you can perform the following command on the app-cluster node:
 
-> **Note:** To retrieve the node-port for the service, perform the following command on the k8s app cluster:
->
-> ```bash
-> $ kubectl -n default-tenant get services | grep code-server-nodeport
-> code-server-nodeport                                        NodePort    10.194.45.128    <none>        8080:30073/TCP                  21h
-> ```
->
-> In this example, the service is exposed through port 30073. Your port will most likely be different.
+  ```bash
+  $ kubectl -n default-tenant get ingress vscode
+  NAME     HOSTS                                             ADDRESS   PORTS     AGE
+  vscode   vscode.default-tenant.app.saarc.iguazio-cd1.com             80, 443   44m
+  ```
+
+  The URL appears under the HOSTS column (in this case - `vscode.default-tenant.app..`)
+* `http://<app-node IP>:<vscode node-port>` - this uses the NodePort interface to access the service.  
+  To retrieve the node-port for the service, perform the following command on the k8s app cluster:
+
+  ```bash
+  $ kubectl -n default-tenant get services | grep code-server-nodeport
+  code-server-nodeport                                        NodePort    10.194.45.128    <none>        8080:30073/TCP                  21h
+  ```
+
+  In this example, the service is exposed through port 30073. Your port will most likely be different.
