@@ -47,7 +47,7 @@ The following components are installed as part of the Helm chart:
 * A service exposing the deployment
 * External access methods:
   * An Ingress exposing the code-server as an external URL
-  * A NodePort exposing the same through the app-cluster nodes using a specific port
+  * A NodePort exposing the same through the app-cluster nodes using a specific port (you need to specify that you want the NodePort to be deployed)
   
   > ## **Note:** The NodePort is essentially a **security hole** and must never be deployed in production
   >
@@ -68,6 +68,7 @@ To deploy the vscode helm chart, the following steps are needed:
 
 2. Modify the values in the `helm-chart/values.yaml` file, providing the namespace where the service is to be deployed (usually `default-tenant`), the Iguazio domain, and the version
    * The `curlIp` parameter is somewhat difficult to obtain. It needs to point at the data-cluster nginx server, and is used to download several executables from there. How to retrieve this information is **TBD**
+   * Set the `nodePort.enabled` parameter if you want a NodePort to be created. By default it is not enabled
 3. Install the Helm chart provided in `helm-chart/Chart.yaml`, giving it a name per your choosing, for example to name it vscode:
 
     ```bash

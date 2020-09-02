@@ -13,3 +13,7 @@ igzDomain: default-tenant.app.saarc.iguazio-cd1.com
 igzVersion: 2.10_b74_20200830163329
 
 curlIp: 172.31.7.121:8010
+
+# Change to true to create the nodeport resource
+nodePort:
+  enabled: false

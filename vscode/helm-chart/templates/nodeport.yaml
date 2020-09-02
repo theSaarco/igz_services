@@ -1,3 +1,5 @@
+{{- if .Values.nodePort.enabled -}}
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -17,3 +19,5 @@ spec:
     app: code-server-{{ .Values.user }}
   sessionAffinity: None
   type: NodePort
+
+{{- end }}
