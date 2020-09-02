@@ -199,9 +199,19 @@ data:
 
     export PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 
+    # Configure k8s configuration (for the k8s extension)
     if [ ! -e "${HOME}/.kube/config" ]; then
       mkdir -p ${HOME}/.kube
       cp /home/iguazio/.kube/config ${HOME}/.kube/config      
+    fi
+
+    # Configure some default settings for the vscode UI
+    if [ ! -e "${HOME}/.local/share/code-server/User/settings.json" ]; then
+      mkdir -p ${HOME}/.local/share/code-server/User || touch ${HOME}/.local/share/code-server/User/settings.json
+      echo "{" >> ${HOME}/.local/share/code-server/User/settings.json
+      echo "    \"python.dataScience.alwaysTrustNotebooks\": true," >> ${HOME}/.local/share/code-server/User/settings.json
+      echo "    \"workbench.colorTheme\": \"Default Dark+\"" >> ${HOME}/.local/share/code-server/User/settings.json
+      echo "}" >> ${HOME}/.local/share/code-server/User/settings.json
     fi
 
     source activate base
