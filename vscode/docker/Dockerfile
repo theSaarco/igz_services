@@ -64,7 +64,7 @@ RUN ARCH=amd64 && \
     mkdir -p /etc/fixuid && \
     printf "user: iguazio\ngroup: iguazio\n" > /etc/fixuid/config.yml
 
-RUN CODE_SERVER_VERSION=3.4.1 && \
+RUN CODE_SERVER_VERSION=3.5.0 && \
     curl -sSOL https://github.com/cdr/code-server/releases/download/v${CODE_SERVER_VERSION}/code-server_${CODE_SERVER_VERSION}_amd64.deb && \
     sudo dpkg -i code-server_${CODE_SERVER_VERSION}_amd64.deb
 
@@ -108,10 +108,8 @@ RUN conda install -c anaconda --quiet --yes \
     conda remove --quiet --yes --force qt pyqt && \
     conda clean -tipsy
 
-# Need to use an older version of the extension since 2020.6* versions have a bug making it unusable in our case.
-# Will need to revisit once the 2020.7 version is available.
 RUN /usr/bin/code-server \
-	--install-extension ms-python.python@2020.5.86806 \
+	--install-extension ms-python.python \
 	--install-extension coenraads.bracket-pair-colorizer-2 \
 	--install-extension oderwat.indent-rainbow \
 	--install-extension yzhang.markdown-all-in-one \
