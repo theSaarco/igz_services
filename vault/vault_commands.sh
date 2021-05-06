@@ -10,7 +10,7 @@ vault write auth/kubernetes/config \
 vault policy write mlrun-api-full /home/vault/mlrun_api_full_policy.hcl
 
 vault write auth/kubernetes/role/mlrun-role-user-mlrun-api \
-	bound_service_account_names=mlrun-api \
-	bound_service_account_namespaces=vault \
+	bound_service_account_names=mlrun-api,jupyter-job-executor \
+	bound_service_account_namespaces=default-tenant \
 	policies=mlrun-api-full \
 	ttl=12h

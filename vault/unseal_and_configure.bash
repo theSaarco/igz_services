@@ -10,4 +10,5 @@ kubectl -n vault exec -it vault-0 -- vault operator unseal $UNSEAL_KEY
 kubectl -n vault exec -it vault-0 -- sh -c "echo $ROOT_TOKEN | vault login - ; source /home/vault/vault_commands.sh" 
 
 kubectl -n default-tenant patch deployments.apps mlrun-api -p '{"spec":{"template":{"spec":{"containers":[{"name":"mlrun-api","env":[{"name":"MLRUN_SECRET_STORES__VAULT__URL","value":"http://vault-internal.vault:8200"},{"name":"MLRUN_SECRET_STORES__VAULT__ROLE","value":"user:mlrun-api"}]}]}}}}'
+kubectl -n default-tenant patch deployments.apps jupyter -p '{"spec":{"template":{"spec":{"containers":[{"name":"jupyter","env":[{"name":"MLRUN_SECRET_STORES__VAULT__URL","value":"http://vault-internal.vault:8200"},{"name":"MLRUN_SECRET_STORES__VAULT__ROLE","value":"user:mlrun-api"}]}]}}}}'
 kubectl -n default-tenant patch role mlrun-api --type="json" -p='[{"op":"add", "path":"/rules/0/resources/-", "value": "serviceaccounts"}]'
