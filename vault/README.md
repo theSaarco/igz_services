@@ -2,7 +2,8 @@
 
 > ## **Warning:**
 >
-> This deployment script is intended for demo purposes only! It makes shortcuts which are easier to use, but generate a configuration which is not secure enough for production purposes.
+> 1. This deployment script is intended for demo purposes only! It makes shortcuts which are easier to use, but generate a configuration which is not secure enough for production purposes.
+> 2. For Vault functionality to work properly, you need at least MLRun **v0.6.2** or newer deployed on the system.
 
 To deploy Vault do the following:
 
