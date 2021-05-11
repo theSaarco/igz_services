@@ -30,10 +30,12 @@ After executing everything, you will have the following things deployed and conf
 4. Vault will also have the following configured in it (these commands are all in the [vault_commands.sh](./vault_commands.sh) script):
    1. Secrets KV engine is enabled in the usual path (`/secret`)
    2. K8s authentication method is enabled and configured to authenticate with the local k8s cluster
-   3. An `mlrun-api-full` policy is created which provides admin-level permissions on secrets and other Vault constructs
-   4. An `mlrun-role-user-mlrun-api` role is created which allows MLRun and Jupyter pods to use the `mlrun-api-full` policy (connects it to their service-accounts)
-5. The `mlrun-api` deployment is patched, adding needed env-variables pointing at the Vault service (the internal headless service) and the role, so that MLRun can work with Vault
-6. The `jupyter` deployment is patched the same (note that this assumes you already have Jupyter installed in the system and it's called simply `jupyter`)
+   3. A Vault policy and role are created for the MLRun API service:
+      1. `mlrun-api-full` policy is created which provides admin-level permissions on secrets and other Vault constructs
+      2. `mlrun-role-user-mlrun-api` role is created which allows MLRun pod to use the `mlrun-api-full` policy (connects it to its service-accounts)
+   4. Another, similar, set of policy and role is created for user `admin` - these will be used by the Jupyter pod. The policy is `admin-full` and it can access secrets belonging to any project. The role is called `mlrun-role-user-admin` per the MLRun role names convention
+5. The `mlrun-api` deployment is patched, adding needed env-variables pointing at the Vault service (the internal headless service) and the role (`user:mlrun-api`), so that MLRun can work with Vault
+6. The `jupyter` deployment is patched the same (note that this assumes you already have Jupyter installed in the system and it's called simply `jupyter`) - the role is `user:admin` in this case
 7. The `mlrun-api` k8s role is patched to add permissions on service-accounts, since MLRun needs to be able to create SAs as part of configuring project-level secret access with Vault
 
 ## Connecting to Vault and performing CLI operations
